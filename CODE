@@ -1,0 +1,289 @@
+#include <Servo.h>
+  int z=0;
+  int posu = 90;
+  int posl = 90;
+  int slu=A1;
+  int sld=A0;
+  int sru=A4;
+  int srd=A2;
+  int lu,ld,ru,rd,k;
+  Servo servo_9;
+  
+  Servo servo_8;
+  void  moveleftupper(int &posu,int &posl)
+  {
+      z=0;
+
+    for (z=120; z<180;z++) {
+      // tell servo to go to position in variable 'pos'
+      servo_9.write(z);
+      servo_8.write(300-z);
+        lu=analogRead(slu);
+    ld=analogRead(sld);
+    ru=analogRead(sru);
+    rd=analogRead(srd);
+    
+    Serial.print("Upperleft:");
+    Serial.print(lu);
+    Serial.print("\n");
+    Serial.print("downleft:");
+    Serial.print(ld);
+    Serial.print("\n");
+    Serial.print("Upperright:");
+    Serial.print(ru);
+    Serial.print("\n");
+    Serial.print("downright:");
+    Serial.print(rd);
+    Serial.print("\n");
+
+    k=max(lu,ld);
+    k=max(k,ru);
+    k=max(k,rd);
+    if(lu==ld&&lu==ru&&lu==rd){
+      return;
+    }
+    else if(lu==k){
+     if(z==179){
+      z=178;
+     }
+      }
+      else if(ld==k){
+      moveleftdown(posu,posl);
+      }
+      else if(ru==k){
+        moverightupper(posu,posl);
+      }
+      else{
+        moverightdown(posu,posl);
+      }
+      
+       //servo_8.write(--posu);
+      // wait 15 ms for servo to reach the position
+        delay(10); // Wait for 15 millisecond(s)
+    }
+    
+        delay(10);
+   
+     // Wait for 15 millisecond(s)
+  }
+  
+  void moverightupper(int &posu,int &posl){
+           z=0;
+//    Serial.print(posu);
+    for (z=120; z<180;z++) {
+      // tell servo to go to position in variable 'pos'
+      servo_9.write(z);
+      servo_8.write(z);
+        lu=analogRead(slu);
+    ld=analogRead(sld);
+    ru=analogRead(sru);
+    rd=analogRead(srd);
+    Serial.print("Upperleft:");
+  Serial.print(lu);
+  Serial.print("\n");
+  Serial.print("downleft:");
+  Serial.print(ld);
+  Serial.print("\n");
+  Serial.print("Upperright:");
+  Serial.print(ru);
+  Serial.print("\n");
+  Serial.print("downright:");
+  Serial.print(rd);
+  Serial.print("\n");
+   //delay(1000);
+    k=max(lu,ld);
+    k=max(k,ru);
+    k=max(k,rd);
+    if(lu==ld&&lu==ru&&lu==rd){
+      return;
+    }
+    else if(lu==k){
+      moveleftupper(posu,posl);
+      }
+      else if(ld==k){
+        Serial.print("I am moving");
+        moveleftdown(posu,posl);
+      }
+      else if(ru==k){
+         if(z==179){
+      z=178;
+     }
+        
+      }
+      else{
+        moverightdown(posu,posl);
+      }
+      
+       //servo_8.write(--posu);
+      // wait 15 ms for servo to reach the position
+      delay(10); // Wait for 15 millisecond(s)
+    }
+    
+  delay(10);
+   // Wait for 15 millisecond(s)
+  }
+
+  
+  void moveleftdown(int &posu,int &posl){
+     z=0;
+//    Serial.print(posu);
+    for (z=180; z>120;z--) {
+      // tell servo to go to position in variable 'pos'
+      servo_9.write(z);
+      servo_8.write(z);
+        lu=analogRead(slu);
+    ld=analogRead(sld);
+    ru=analogRead(sru);
+    rd=analogRead(srd);
+    Serial.print("Upperleft:");
+  Serial.print(lu);
+  Serial.print("\n");
+  Serial.print("downleft:");
+  Serial.print(ld);
+  Serial.print("\n");
+  Serial.print("Upperright:");
+  Serial.print(ru);
+  Serial.print("\n");
+  Serial.print("downright:");
+  Serial.print(rd);
+  Serial.print("\n");
+  // delay(1000);
+    k=max(lu,ld);
+    k=max(k,ru);
+    k=max(k,rd);
+    if(lu==ld&&lu==ru&&lu==rd){
+      return;
+    }
+    else if(lu==k){
+      moveleftupper(posu,posl);
+      }
+      else if(ld==k){
+         if(z==121){
+      z=122;
+     }
+     
+      }
+      else if(ru==k){
+        moverightupper(posu,posl);
+      }
+      else{
+        moverightdown(posu,posl);
+      }
+      
+       //servo_8.write(--posu);
+      // wait 15 ms for servo to reach the position
+      delay(10); // Wait for 15 millisecond(s)
+    }
+    
+  delay(10);
+    // Wait for 15 millisecond(s)
+  
+  }
+void moverightdown(int &posu,int &posl){
+      z=0;
+//    Serial.print(posu);
+    for (z=180; z>120;z--) {
+      // tell servo to go to position in variable 'pos'
+      servo_9.write(z);
+      servo_8.write(300-z);
+        lu=analogRead(slu);
+    ld=analogRead(sld);
+    ru=analogRead(sru);
+    rd=analogRead(srd);
+    Serial.print("Upperleft:");
+  Serial.print(lu);
+  Serial.print("\n");
+  Serial.print("downleft:");
+  Serial.print(ld);
+  Serial.print("\n");
+  Serial.print("Upperright:");
+  Serial.print(ru);
+  Serial.print("\n");
+  Serial.print("downright:");
+  Serial.print(rd);
+  Serial.print("\n");
+   //delay(1000);
+    k=max(lu,ld);
+    k=max(k,ru);
+    k=max(k,rd);
+    if(lu==ld&&lu==ru&&lu==rd){
+      return;
+    }
+    else if(lu==k){
+      moveleftupper(posu,posl);
+      }
+      else if(ld==k){
+        Serial.print("I am moving");
+        moveleftdown(posu,posl);
+      }
+      else if(ru==k){
+        moverightupper(posu,posl);
+      }
+      else{
+         if(z==121){
+          z=122;
+         }
+      }
+      
+       //servo_8.write(--posu);
+      // wait 15 ms for servo to reach the position
+      delay(10); // Wait for 15 millisecond(s)
+    }
+    
+  delay(10);
+  
+}
+void setup()
+{
+  servo_9.attach(8, 500, 2500);
+  servo_8.attach(6, 500, 2500);
+  servo_9.write(posl);
+  servo_8.write(posu);
+  
+  pinMode(slu,INPUT);
+  pinMode(sld,INPUT);
+  pinMode(sru,INPUT);
+  pinMode(srd,INPUT);
+  Serial.begin(9600); 
+}
+
+void loop()
+{
+  lu=analogRead(slu);
+  ld=analogRead(sld);
+  ru=analogRead(sru);
+  rd=analogRead(srd);
+  Serial.print("Upperleft:");
+  Serial.print(lu);
+  Serial.print("\n");
+  Serial.print("downleft:");
+  Serial.print(ld);
+  Serial.print("\n");
+  Serial.print("Upperright:");
+  Serial.print(ru);
+  Serial.print("\n");
+  Serial.print("downright:");
+  Serial.print(rd);
+  Serial.print("\n");
+ delay(1000);
+  k=max(lu,ld);
+  k=max(k,ru);
+  k=max(k,rd);
+  if(lu==ld&&lu==ru&&lu==rd){
+  }
+  else if(lu==k){
+    moveleftupper(posu,posl);
+    }
+    else if(ld==k){
+      moveleftdown(posu,posl);
+      //Serial.print("I am moving");
+    }
+    else if(ru==k){
+      moverightupper(posu,posl);
+    }
+    else{
+      moverightdown(posu,posl);
+    }
+
+  
+}
