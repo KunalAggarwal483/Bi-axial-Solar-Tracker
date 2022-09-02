@@ -30,3 +30,8 @@ In this way at every milisecond the sensors values are read continously and the 
 THE CODE FOR ABOVE FUNCTIONALITY IS PROVIDED IN THE REPOSITORY.
 
 Below are provided the video and images link related to working and architecture of the SOLAR TRACKER and its connection diagram.
+
+VIDEO link - https://drive.google.com/file/d/1GIctOU1s9jiB_2PHreuJ33SlZo8JXeXg/view?usp=sharing
+             
+             https://drive.google.com/file/d/1G5xJ3WYHlBzw9-BqBQq_J1yXSBSutSWF/view?usp=sharing
+             
